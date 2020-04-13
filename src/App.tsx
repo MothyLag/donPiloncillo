@@ -14,7 +14,7 @@ function App() {
       <Provider store={store}>
         <Switch>
           <Route path="/">
-            <NavBar />
+            {/* <NavBar /> */}
             <LoginPage />
           </Route>
         </Switch>
