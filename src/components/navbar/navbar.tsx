@@ -1,3 +1,4 @@
+import React from "react";
 import { INavbarProps } from "./navbar.types";
 import { Wrapper, Blurred, NavbarContent } from "./navbar.styles";
 import { CuteButton } from "../cutebutton/cutebutton";

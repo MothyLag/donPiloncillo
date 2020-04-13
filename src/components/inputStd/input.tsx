@@ -1,3 +1,4 @@
+import React from "react";
 import { InputStd, SelectStd, OptionStd } from "./inptStd.styles";
 import { IInputProps } from "./input.types";
 

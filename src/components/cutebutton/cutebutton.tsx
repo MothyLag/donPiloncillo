@@ -1,3 +1,4 @@
+import React from "react";
 import { ICuteButtonProps } from "./cuteburron.types";
 import { ButtonCute, Icono } from "./cutebutton.styles";
 

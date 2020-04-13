@@ -3,7 +3,7 @@ import { formSignUpInitialValues } from "./formSignUp.initialValues";
 export const useFormSignUp = () => {
   return {
     initialValues: formSignUpInitialValues,
-    onSubmit: () => null,
+    onSubmit: () => {},
     validationSchema: formSignUpSchema,
   };
 };

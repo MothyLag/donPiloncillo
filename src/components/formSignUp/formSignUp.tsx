@@ -1,3 +1,4 @@
+import React from "react";
 import { FormWrapper } from "./formSignUpStd.styles";
 import { Input } from "../inputStd/input";
 import { useFormSignUp } from "./formSignUp.formik";

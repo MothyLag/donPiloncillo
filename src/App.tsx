@@ -2,7 +2,6 @@ import React from "react";
 import "./App.sass";
 import { Switch, Route } from "react-router-dom";
 import LoginPage from "./pages/Login/Login.page";
-import NavBar from "./components/navBar/NavBar";
 import { Provider } from "react-redux";
 import reducers from "./store/reducers";
 import { createStore } from "redux";
