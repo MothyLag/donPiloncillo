@@ -34,6 +34,15 @@ export default () => {
             width="90%"
           />
         </LoginWrapper>
+
+        <LoginWrapper>
+          <MaterialInput
+            color="white"
+            labelColor="#CDCDCD"
+            label="usuario"
+            width="90%"
+          />
+        </LoginWrapper>
       </FlexibleCard>
     </FlexibleCardWrapper>
   );
