@@ -29,7 +29,7 @@ export const NewLogin = () => {
         onBlur={formik.handleBlur}
         value={formik.values.password}
       />
-      <SubmitButton>Entrar.</SubmitButton>
+      <SubmitButton>Entrar</SubmitButton>
     </FormWrapper>
   );
 };
