@@ -6,6 +6,7 @@ export const SubmitButton = styled.button`
   background: #ffffff;
   color: #000000;
   font-weight: bold;
+  outline: none;
   border-color: transparent;
   font-size: 25px;
   border-color: #000000;
