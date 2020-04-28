@@ -7,11 +7,11 @@ export const ButtonSubmit = (props: ISubmitButtonProps) => {
   return (
     <>
       {icono !== "none" ? (
-        <SubmitButton>
+        <SubmitButton type="submit">
           <Icono src={icono} /> {text}{" "}
         </SubmitButton>
       ) : (
-        <SubmitButton>{text}</SubmitButton>
+        <SubmitButton type="submit">{text}</SubmitButton>
       )}
     </>
   );
