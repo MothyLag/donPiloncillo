@@ -1,9 +1,9 @@
 import { ISessionState, ISessionActions } from "../../utils/state.type";
-import { LOG_OUT } from "../../utils/state.actions";
-import { logOut } from "../actions/session.actions";
+import { LOG_OUT, LOG_IN } from "../../utils/state.actions";
+import { logOut, logIn } from "../actions/session.actions";
 
 const initialState = {
-  logged: false
+  logged: false,
 };
 
 const sessionReducer = (
@@ -13,6 +13,9 @@ const sessionReducer = (
   switch (action.type) {
     case LOG_OUT:
       return logOut(state);
+
+    case LOG_IN:
+      return logIn(state);
 
     default:
       return state;
