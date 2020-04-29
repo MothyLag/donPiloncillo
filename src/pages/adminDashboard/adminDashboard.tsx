@@ -25,9 +25,9 @@ export const AdminDashboard = () => {
   return (
     <AdminWrapper>
       <Navbar>
-        <CuteButton text="Texto Largo 1" />
-        <CuteButton text="Texto Largo 2" />
-        <CuteButton text="Texto Largo 3" />
+        <CuteButton text="Catalogos" />
+        <CuteButton text="Proveedores" />
+        <CuteButton text="Usuarios" />
       </Navbar>
       <CenterBox>
         <BoxContWrapper></BoxContWrapper>
