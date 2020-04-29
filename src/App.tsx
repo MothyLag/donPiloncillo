@@ -12,10 +12,10 @@ function App() {
   return (
     <Provider store={store}>
       <Switch>
-        <Route exact path="/adminDashboard">
+        <Route path="/adminDashboard">
           <AdminDashboard />
         </Route>
-        <Route exact path="/">
+        <Route path="/">
           {/* <NavBar /> */}
           <NewLoginPage />
         </Route>
