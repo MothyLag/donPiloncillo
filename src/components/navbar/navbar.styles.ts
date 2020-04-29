@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
@@ -27,7 +26,6 @@ export const NavbarLeft = styled.div`
 
 export const Blurred = styled.div`
   position: fixed;
-  backdrop-filter: blur(10px);
   top: 0;
   left: 0;
   width: 100vw;
@@ -35,5 +33,6 @@ export const Blurred = styled.div`
   padding: 0px;
   margin: 0px;
   z-index: 99;
+  backdrop-filter: blur(10px);
   box-shadow: inset 0 0 2000px rgba(0, 0, 0, 0.85);
 `;
