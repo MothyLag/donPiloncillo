@@ -10,7 +10,7 @@ export const ButtonCute = styled.button`
   border-color: transparent;
   font-size: 18px;
   border: 2px solid #FFFFFF;
-  border-radius: 15px;
+  border-radius: 5px;
   cursor: pointer;
   transition: all 0.4s;
   :hover {
