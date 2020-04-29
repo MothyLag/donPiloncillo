@@ -16,7 +16,7 @@ export const NavbarContent = styled.div`
   padding: 10px;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 `;
 
