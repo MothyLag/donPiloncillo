@@ -3,7 +3,7 @@ import { ICuteButtonProps } from "./cuteburron.types";
 import { ButtonCute, Icono } from "./cutebutton.styles";
 
 export const CuteButton = (props: ICuteButtonProps) => {
-  const { text, ejemplo, icono = "none" } = props;
+  const { text, icono = "none" } = props;
   return (
     <>
       {icono !== "none" ? (

@@ -6,6 +6,7 @@ import { IAppState } from "../../utils/state.type";
 import { useHistory } from "react-router";
 import { Navbar } from "../../components/navbar/navbar";
 import { CuteButton } from "../../components/cutebutton/cutebutton";
+import { BoxContWrapper } from "../../components/boxContent/boxContent.styles";
 
 export const AdminDashboard = () => {
   const logged = useSelector<IAppState>((state) => state.session.logged);
@@ -24,6 +25,8 @@ export const AdminDashboard = () => {
         <CuteButton text="cute1" />
         <CuteButton text="cute2" />
       </Navbar>
+
+      <BoxContWrapper>asd</BoxContWrapper>
     </AdminWrapper>
   );
 };
