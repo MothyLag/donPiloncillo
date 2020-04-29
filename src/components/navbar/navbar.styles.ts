@@ -12,8 +12,8 @@ export const Wrapper = styled.div`
 `;
 
 export const NavbarContent = styled.div`
-  padding: 10px;
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;

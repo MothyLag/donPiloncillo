@@ -30,7 +30,7 @@ export const AdminDashboard = () => {
         <CuteButton text="Texto Largo 3" />
       </Navbar>
       <CenterBox>
-        <BoxContWrapper>asd</BoxContWrapper>
+        <BoxContWrapper></BoxContWrapper>
       </CenterBox>
     </AdminWrapper>
   );
