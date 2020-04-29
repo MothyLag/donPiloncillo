@@ -5,6 +5,7 @@ export const ButtonCute = styled.button`
   background: transparent;
   color: #3a3a3a;
   border-radius: 3px;
+  outline: none;
   border-color: transparent;
   font-size: 18px;
   cursor: pointer;

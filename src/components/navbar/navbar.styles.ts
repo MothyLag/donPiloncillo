@@ -17,7 +17,7 @@ export const NavbarContent = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items:center;
+  align-items: center;
 `;
 
 export const NavbarLeft = styled.div`
@@ -35,5 +35,5 @@ export const Blurred = styled.div`
   padding: 0px;
   margin: 0px;
   z-index: 99;
-  box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.85);
+  box-shadow: inset 0 0 2000px rgba(0, 0, 0, 0.85);
 `;

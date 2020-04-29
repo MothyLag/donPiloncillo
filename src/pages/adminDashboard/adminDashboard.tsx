@@ -1,25 +1,29 @@
 import React, { useEffect } from "react";
 import { AdminWrapper } from "./adminDashboard.styles";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { IAppState } from "../../utils/state.type";
-import { LOG_OUT } from "../../utils/state.actions";
+
 import { useHistory } from "react-router";
+import { Navbar } from "../../components/navbar/navbar";
+import { CuteButton } from "../../components/cutebutton/cutebutton";
 
 export const AdminDashboard = () => {
   const logged = useSelector<IAppState>((state) => state.session.logged);
-  const dispatch = useDispatch();
+
   const history = useHistory();
 
   useEffect(() => {
     if (!logged) {
-      history.replace("/");
+      //history.replace("/");
     }
   }, [logged, history]);
 
   return (
     <AdminWrapper>
-      {logged ? "entra" : "no entra"}
-      <button onClick={() => dispatch({ type: LOG_OUT })}>Salir</button>
+      <Navbar>
+        <CuteButton text="cute1" />
+        <CuteButton text="cute2" />
+      </Navbar>
     </AdminWrapper>
   );
 };
