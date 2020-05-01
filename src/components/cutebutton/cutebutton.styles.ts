@@ -4,18 +4,19 @@ export const ButtonCute = styled.button`
   justify-content: center;
   background: transparent;
 
-  color: #FFFFFF;
+  color: #ffffff;
   border-radius: 3px;
   outline: none;
   border-color: transparent;
   font-size: 18px;
-  border: 2px solid #FFFFFF;
+  border: 2px solid #ffffff;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.4s;
+  font-weight: bold;
   :hover {
     transform: scale(1.1);
-    background: #FFFFFF;
+    background: #ffffff;
     color: #000000;
   }
 `;

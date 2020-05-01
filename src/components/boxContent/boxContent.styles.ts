@@ -2,10 +2,13 @@ import styled from "styled-components";
 
 export const BoxContWrapper = styled.div`
   width: 80%;
-  min-height: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   backdrop-filter: blur(10px);
   background-color: rgba(0, 0, 0, 0.5);
-  overflow-y: auto;
+  overflow: auto;
 `;
 
 export const CenterBox = styled.div`

@@ -10,6 +10,8 @@ import {
   BoxContWrapper,
   CenterBox,
 } from "../../components/boxContent/boxContent.styles";
+import { CustomTable } from "../../components/customTable/customTable";
+import { CustomTabs } from "../../components/customTabs/customTabs";
 
 export const AdminDashboard = () => {
   const logged = useSelector<IAppState>((state) => state.session.logged);
@@ -30,7 +32,16 @@ export const AdminDashboard = () => {
         <CuteButton text="Usuarios" />
       </Navbar>
       <CenterBox>
-        <BoxContWrapper></BoxContWrapper>
+        <BoxContWrapper>
+          <CustomTabs
+            tabs={["1", "2"]}
+            content={[<p>content1</p>, <p>content2</p>]}
+          ></CustomTabs>
+          {/* <CustomTable
+            headers={["uno", "dos"]}
+            data={[{ uno: "uno", dos: "dos" }]}
+          ></CustomTable> */}
+        </BoxContWrapper>
       </CenterBox>
     </AdminWrapper>
   );
