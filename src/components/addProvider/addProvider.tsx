@@ -96,7 +96,7 @@ export const AddProvider = () => {
         value={formik.values.telefono}
         placeholder="Teléfono"
       />
-      <SubmitButton>Registrar</SubmitButton>
+      <SubmitButton>Agregar</SubmitButton>
     </FormWrapper>
   );
 };

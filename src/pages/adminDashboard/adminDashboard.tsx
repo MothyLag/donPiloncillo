@@ -11,7 +11,7 @@ import {
   CenterBox,
 } from "../../components/boxContent/boxContent.styles";
 
-import { AddProvider } from "../../components/addProvider/addProvider";
+import { AddRequisicion } from "../../components/addRequisicion/addRequisicion";
 
 export const AdminDashboard = () => {
   const logged = useSelector<IAppState>((state) => state.session.logged);
@@ -32,7 +32,7 @@ export const AdminDashboard = () => {
         <CuteButton text="Usuarios" />
       </Navbar>
       <CenterBox>
-        <BoxContWrapper><AddProvider/></BoxContWrapper>
+        <BoxContWrapper><AddRequisicion/></BoxContWrapper>
       </CenterBox>
     </AdminWrapper>
   );
