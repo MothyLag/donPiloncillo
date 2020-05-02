@@ -13,6 +13,8 @@ import {
 import { CustomTable } from "../../components/customTable/customTable";
 import { CustomTabs } from "../../components/customTabs/customTabs";
 
+import { AddRequisicion } from "../../components/addRequisicion/addRequisicion";
+
 export const AdminDashboard = () => {
   const logged = useSelector<IAppState>((state) => state.session.logged);
 
@@ -33,14 +35,7 @@ export const AdminDashboard = () => {
       </Navbar>
       <CenterBox>
         <BoxContWrapper>
-          <CustomTabs
-            tabs={["1", "2"]}
-            content={[<p>content1</p>, <p>content2</p>]}
-          ></CustomTabs>
-          {/* <CustomTable
-            headers={["uno", "dos"]}
-            data={[{ uno: "uno", dos: "dos" }]}
-          ></CustomTable> */}
+          <AddRequisicion />
         </BoxContWrapper>
       </CenterBox>
     </AdminWrapper>
