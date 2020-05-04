@@ -1,5 +1,6 @@
 export interface IAppState {
   session: ISessionState;
+  modal: IModalState;
 }
 
 export interface IAppActions {
@@ -8,6 +9,14 @@ export interface IAppActions {
 
 export interface ISessionState {
   logged: boolean;
+}
+
+export interface IModalState {
+  open: boolean;
+}
+
+export interface IModalActions {
+  type: string;
 }
 
 export interface ISessionActions {

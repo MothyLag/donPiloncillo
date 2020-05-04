@@ -5,5 +5,5 @@ export const FormWrapper = styled.form`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100%;
+  width: 80%;
 `;
