@@ -15,7 +15,7 @@ export const CustomTable = (props: ICustomTableProps) => {
     <TableWrapper>
       <TableHeader>
         {headers.map((head) => (
-          <TableH>head</TableH>
+          <TableH>{head}</TableH>
         ))}
       </TableHeader>
       <TableBody>
