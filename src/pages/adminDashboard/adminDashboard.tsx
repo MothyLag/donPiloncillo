@@ -33,10 +33,12 @@ export const AdminDashboard = () => {
   useEffect(() => {
     if (data === "providers") {
       providersDB.getAllProviders().then((res) => {
-        const rows = res.rows;
-        const providers = rows.map((row: any) => row.doc);
-        console.log(Object.keys(providers[0]));
-        setDataTable({ rows: providers, headers: Object.keys(providers[0]) });
+        if (res.rows) {
+          const rows = res.rows;
+          const providers = rows.map((row: any) => row.doc);
+          console.log(Object.keys(providers[0]));
+          setDataTable({ rows: providers, headers: Object.keys(providers[0]) });
+        }
       });
     }
   }, [data]);
