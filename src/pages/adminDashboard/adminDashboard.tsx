@@ -33,7 +33,7 @@ export const AdminDashboard = () => {
   useEffect(() => {
     if (data === "providers") {
       providersDB.getAllProviders().then((res) => {
-        if (res.rows) {
+        if (res.rows.length > 0) {
           const rows = res.rows;
           const providers = rows.map((row: any) => row.doc);
           console.log(Object.keys(providers[0]));
