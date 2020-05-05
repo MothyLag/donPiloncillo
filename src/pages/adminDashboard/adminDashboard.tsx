@@ -15,13 +15,17 @@ import { FloatButton } from "../../components/floatButton/floatButton";
 import { Modal } from "../../components/modal/modal";
 import { AddRequisicion } from "../../components/addRequisicion/addRequisicion";
 import { OPEN_MODAL } from "../../utils/state.actions";
+import { AddProvider } from "../../components/addProvider/addProvider";
+import { ProviderDB } from "../../database/providers/providers.pouch";
 
 export const AdminDashboard = () => {
   const logged = useSelector<IAppState>((state) => state.session.logged);
   const dispatch = useDispatch();
   const history = useHistory();
-
+  const data = useSelector<IAppState>((state) => state.data.data);
+  const providersDB = new ProviderDB();
   useEffect(() => {
+    providersDB.getAllProviders().then((res) => console.log(res));
     if (!logged) {
       //history.replace("/");
     }
@@ -45,7 +49,10 @@ export const AdminDashboard = () => {
         ></FloatButton>
       </CenterBox>
       <Modal title="titulo">
-        <AddRequisicion />
+        <>
+          {data == "providers" && <AddProvider />}
+          {data == "users" && <AddProvider />}
+        </>
       </Modal>
     </AdminWrapper>
   );

@@ -1,10 +1,21 @@
 export interface IAppState {
   session: ISessionState;
   modal: IModalState;
+  data: IDataState;
 }
 
 export interface IAppActions {
   session: ISessionActions;
+  data: IDataActions;
+}
+
+export interface IDataState {
+  data: string;
+}
+
+export interface IDataActions {
+  type: string;
+  payload: object;
 }
 
 export interface ISessionState {
