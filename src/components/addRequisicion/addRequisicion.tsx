@@ -5,10 +5,13 @@ import { useAddRequisicion } from "./addRequisicion.formik";
 import { useFormik } from "formik";
 import { IAddRequisicion } from "./addRequisicion.types";
 import { SubmitButton } from "../submitbutton/submitbutton.styles";
+import { useSelector } from "react-redux";
+import { IAppState } from "../../utils/state.type";
 
 export const AddRequisicion = () => {
   const addRequisicion = useAddRequisicion();
   const formik = useFormik<IAddRequisicion>(addRequisicion);
+  const dataState = useSelector<IAppState>(state => state.data.data );
 
   return (
     <FormWrapper onSubmit={formik.handleSubmit}>
@@ -20,6 +23,9 @@ export const AddRequisicion = () => {
         value={formik.values.idProveedor}
         placeholder="Id del proveedor"
       />
+      {
+        dataState=="hornillas" || dataState=="evaporacion" || dataState=="envasado" && <Input id="linea" type="select" placeholder="Escoja la linea" onChange={formik.handleChange}onBlur={formik.handleBlur} value={formik.values.linea} />
+      }
       <Input
         id="descripcion"
         placeholder="Descripción"

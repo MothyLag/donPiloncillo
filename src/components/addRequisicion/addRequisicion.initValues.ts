@@ -7,6 +7,7 @@ export const addRequisicionInitialValues = {
 	cantidad: "",
 	partida: "",
 	fechaPedido: "",
+	linea: "",
 	responsableArea: "",
 	departamento: "",
 } as IAddRequisicion;

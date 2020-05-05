@@ -18,6 +18,7 @@ import { AddProvider } from "../../components/addProvider/addProvider";
 import { ProviderDB } from "../../database/providers/providers.pouch";
 import { UserDB } from "../../database/users/users.pouch";
 import { AddUser } from "../../components/addUser/addUser";
+import { AddRequisicion } from "../../components/addRequisicion/addRequisicion";
 
 export const AdminDashboard = () => {
   const logged = useSelector<IAppState>((state) => state.session.logged);
@@ -89,6 +90,8 @@ export const AdminDashboard = () => {
         <>
           {data == "providers" && <AddProvider />}
           {data == "users" && <AddUser />}
+
+          { data != "providers" && data!="users" && <AddRequisicion/> }
         </>
       </Modal>
     </AdminWrapper>

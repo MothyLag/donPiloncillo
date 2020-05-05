@@ -5,6 +5,7 @@ export interface IAddRequisicion{
 	cantidad: string;
 	partida: string;
 	fechaPedido: string;
+	linea?: string;
 	responsableArea: string;
 	departamento: string;
 }
