@@ -46,11 +46,10 @@ export const AdminDashboard = () => {
     }
     if (data === "users") {
       usersDB.getAllUsers().then((res) => {
-        console.log(res.rows);
         if (res.rows.length > 0) {
           const rows = res.rows;
-          const users = rows.map((row: any) => row.doc);
-          console.log(Object.keys(users[0]));
+          let users = rows.map((row: any) => row.doc);
+          users = users.filter((item: any) => item.language === undefined);
           setDataTable({ rows: users, headers: Object.keys(users[0]) });
         }
       });

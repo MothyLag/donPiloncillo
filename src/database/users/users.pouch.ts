@@ -33,8 +33,11 @@ export class UserDB {
   }
   public getAllUsers() {
     return this.db
-      .allDocs({ include_docs: true, attachments: true })
-      .then((res) => res)
+      .allDocs({ include_docs: true, attachments: false })
+      .then((res) => {
+        console.log(res);
+        return res;
+      })
       .catch((error) => error);
   }
 }
