@@ -15,7 +15,11 @@ export interface IDataState {
 
 export interface IDataActions {
   type: string;
-  payload: object;
+  payload: IDataChangePayload;
+}
+
+export interface IDataChangePayload {
+  newData: string;
 }
 
 export interface ISessionState {

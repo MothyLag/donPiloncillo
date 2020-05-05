@@ -13,9 +13,11 @@ import {
 import { CustomTable } from "../../components/customTable/customTable";
 import { FloatButton } from "../../components/floatButton/floatButton";
 import { Modal } from "../../components/modal/modal";
-import { OPEN_MODAL } from "../../utils/state.actions";
+import { OPEN_MODAL, CHANGE_DATA } from "../../utils/state.actions";
 import { AddProvider } from "../../components/addProvider/addProvider";
 import { ProviderDB } from "../../database/providers/providers.pouch";
+import { UserDB } from "../../database/users/users.pouch";
+import { AddUser } from "../../components/addUser/addUser";
 
 export const AdminDashboard = () => {
   const logged = useSelector<IAppState>((state) => state.session.logged);
@@ -23,6 +25,7 @@ export const AdminDashboard = () => {
   const history = useHistory();
   const data = useSelector<IAppState>((state) => state.data.data);
   const providersDB = new ProviderDB();
+  const usersDB = new UserDB();
   const [dataTable, setDataTable] = useState({ rows: [{}], headers: [""] });
   useEffect(() => {
     if (!logged) {
@@ -41,14 +44,35 @@ export const AdminDashboard = () => {
         }
       });
     }
+    if (data === "users") {
+      usersDB.getAllUsers().then((res) => {
+        console.log(res.rows);
+        if (res.rows.length > 0) {
+          const rows = res.rows;
+          const users = rows.map((row: any) => row.doc);
+          console.log(Object.keys(users[0]));
+          setDataTable({ rows: users, headers: Object.keys(users[0]) });
+        }
+      });
+    }
   }, [data]);
 
   return (
     <AdminWrapper>
       <Navbar>
         <CuteButton text="Catalogos" />
-        <CuteButton text="Proveedores" />
-        <CuteButton text="Usuarios" />
+        <CuteButton
+          text="Proveedores"
+          clickHandler={() =>
+            dispatch({ type: CHANGE_DATA, payload: { newData: "providers" } })
+          }
+        />
+        <CuteButton
+          text="Usuarios"
+          clickHandler={() =>
+            dispatch({ type: CHANGE_DATA, payload: { newData: "users" } })
+          }
+        />
       </Navbar>
       <CenterBox>
         <BoxContWrapper>
@@ -65,7 +89,7 @@ export const AdminDashboard = () => {
       <Modal title="titulo">
         <>
           {data == "providers" && <AddProvider />}
-          {data == "users" && <AddProvider />}
+          {data == "users" && <AddUser />}
         </>
       </Modal>
     </AdminWrapper>

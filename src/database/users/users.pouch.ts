@@ -31,4 +31,10 @@ export class UserDB {
       },
     });
   }
+  public getAllUsers() {
+    return this.db
+      .allDocs({ include_docs: true, attachments: true })
+      .then((res) => res)
+      .catch((error) => error);
+  }
 }

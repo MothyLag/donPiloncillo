@@ -1,9 +1,9 @@
-import {IAddUser} from "./addUser.types";
+import { IAddUser } from "./addUser.types";
 
 export const addUserInitialValues = {
-	nombre: "",
-	apellidos: "",
-	username: "",
-	password: "",
-	passwordConfirm: "",
+  nombre: "",
+  apellidos: "",
+  username: "",
+  password: "",
+  passwordConfirm: "",
 } as IAddUser;
