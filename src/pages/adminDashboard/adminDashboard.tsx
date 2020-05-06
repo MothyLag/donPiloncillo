@@ -101,7 +101,6 @@ export const AdminDashboard = () => {
         <>
           {data == "providers" && <AddProvider />}
           {data == "users" && <AddUser setDataTable={setDataTable} />}
-
           {data != "providers" && data != "users" && <AddRequisicion />}
         </>
       </Modal>
