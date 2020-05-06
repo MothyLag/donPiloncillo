@@ -91,7 +91,7 @@ export const AdminDashboard = () => {
           {data == "providers" && <AddProvider />}
           {data == "users" && <AddUser />}
 
-          { data != "providers" && data!="users" && <AddRequisicion/> }
+          { (data != "providers" && data!="users") && <AddRequisicion/> }
         </>
       </Modal>
     </AdminWrapper>

@@ -24,7 +24,7 @@ export const AddRequisicion = () => {
         placeholder="Id del proveedor"
       />
       {
-        dataState=="hornillas" || dataState=="evaporacion" || dataState=="envasado" && <Input id="linea" type="select" placeholder="Escoja la linea" onChange={formik.handleChange}onBlur={formik.handleBlur} value={formik.values.linea} />
+        (dataState=="hornillas" || dataState=="evaporacion" || dataState=="envasado") && <Input id="linea" type="select" placeholder="Escoja la linea" onChange={formik.handleChange}onBlur={formik.handleBlur} value={formik.values.linea} dataSelect={["Liena 1", "Linea 2", "Linea 3", "Linea 4", "Linea 5"]} />
       }
       <Input
         id="descripcion"
