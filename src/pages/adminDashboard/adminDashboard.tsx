@@ -86,7 +86,7 @@ export const AdminDashboard = () => {
           {dataTable.rows.length > 0 ? (
             <CustomTable data={dataTable.rows} headers={dataTable.headers} />
           ) : (
-          <h1>No hay datos en {data}</h1>
+            <h1>No hay datos en {data}</h1>
           )}
         </BoxContWrapper>
         <FloatButton
