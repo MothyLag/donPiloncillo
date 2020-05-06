@@ -19,6 +19,7 @@ import { ProviderDB } from "../../database/providers/providers.pouch";
 import { UserDB } from "../../database/users/users.pouch";
 import { AddUser } from "../../components/addUser/addUser";
 import { AddRequisicion } from "../../components/addRequisicion/addRequisicion";
+import { IDataTableState } from "./adminDashboard.types";
 
 export const AdminDashboard = () => {
   const logged = useSelector<IAppState>((state) => state.session.logged);
@@ -27,7 +28,10 @@ export const AdminDashboard = () => {
   const data = useSelector<IAppState>((state) => state.data.data);
   const providersDB = new ProviderDB();
   const usersDB = new UserDB();
-  const [dataTable, setDataTable] = useState({ rows: [{}], headers: [""] });
+  const [dataTable, setDataTable] = useState<IDataTableState>({
+    rows: [],
+    headers: [],
+  });
   useEffect(() => {
     if (!logged) {
       //history.replace("/");
@@ -40,8 +44,9 @@ export const AdminDashboard = () => {
         if (res.rows.length > 0) {
           const rows = res.rows;
           const providers = rows.map((row: any) => row.doc);
-          console.log(Object.keys(providers[0]));
           setDataTable({ rows: providers, headers: Object.keys(providers[0]) });
+        } else {
+          setDataTable({ rows: [], headers: [] });
         }
       });
     }
@@ -52,6 +57,8 @@ export const AdminDashboard = () => {
           let users = rows.map((row: any) => row.doc);
           users = users.filter((item: any) => item.language === undefined);
           setDataTable({ rows: users, headers: Object.keys(users[0]) });
+        } else {
+          setDataTable({ rows: [], headers: [] });
         }
       });
     }
@@ -76,7 +83,11 @@ export const AdminDashboard = () => {
       </Navbar>
       <CenterBox>
         <BoxContWrapper>
-          <CustomTable data={dataTable.rows} headers={dataTable.headers} />
+          {dataTable.rows.length > 0 ? (
+            <CustomTable data={dataTable.rows} headers={dataTable.headers} />
+          ) : (
+          <h1>No hay datos en {data}</h1>
+          )}
         </BoxContWrapper>
         <FloatButton
           backgroundColor="#67676A"
@@ -89,9 +100,9 @@ export const AdminDashboard = () => {
       <Modal title="titulo">
         <>
           {data == "providers" && <AddProvider />}
-          {data == "users" && <AddUser />}
+          {data == "users" && <AddUser setDataTable={setDataTable} />}
 
-          { data != "providers" && data!="users" && <AddRequisicion/> }
+          {data != "providers" && data != "users" && <AddRequisicion />}
         </>
       </Modal>
     </AdminWrapper>
