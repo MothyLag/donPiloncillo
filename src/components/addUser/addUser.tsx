@@ -7,8 +7,8 @@ import { IAddUser, IAddUserProps } from "./addUser.types";
 import { SubmitButton } from "../submitbutton/submitbutton.styles";
 
 export const AddUser = (props: IAddUserProps) => {
-  const { setDataTable } = props;
-  const addUser = useAddUser(setDataTable);
+  const { dispatch } = props;
+  const addUser = useAddUser(dispatch);
   const formik = useFormik<IAddUser>(addUser);
 
   return (

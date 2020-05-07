@@ -1,3 +1,5 @@
+import { IDataTableState } from "../../pages/adminDashboard/adminDashboard.types";
+
 export interface IAddUser {
   nombre: string;
   apellidos: string;
@@ -7,5 +9,5 @@ export interface IAddUser {
 }
 
 export interface IAddUserProps {
-  setDataTable: React.Dispatch<{ rows: object[]; headers: string[] }>;
+  dispatch: any;
 }

@@ -31,6 +31,14 @@ export class UserDB {
       },
     });
   }
+
+  public async deleteUser(docs: any) {
+    await this.db
+      .remove(docs)
+      .then((res) => res)
+      .catch((res) => res);
+  }
+
   public getAllUsers() {
     return this.db
       .allDocs({ include_docs: true, attachments: false })

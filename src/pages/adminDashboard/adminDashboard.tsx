@@ -27,7 +27,7 @@ export const AdminDashboard = () => {
   const history = useHistory();
   const data = useSelector<IAppState>((state) => state.data.data);
   const providersDB = new ProviderDB();
-  const usersDB = new UserDB();
+  const userDB = new UserDB();
   const [dataTable, setDataTable] = useState<IDataTableState>({
     rows: [],
     headers: [],
@@ -43,7 +43,29 @@ export const AdminDashboard = () => {
       providersDB.getAllProviders().then((res) => {
         if (res.rows.length > 0) {
           const rows = res.rows;
-          const providers = rows.map((row: any) => row.doc);
+          const providers = rows.map((row: any) => {
+            return {
+              ...row.doc,
+              acciones: (
+                <CuteButton
+                  text="Borrar"
+                  clickHandler={() => {
+                    const currentData = data;
+                    providersDB.deleteProvider(row.doc).then((res) => {
+                      dispatch({
+                        type: CHANGE_DATA,
+                        payload: { newData: "Cargando..." },
+                      });
+                      dispatch({
+                        type: CHANGE_DATA,
+                        payload: { newData: currentData },
+                      });
+                    });
+                  }}
+                />
+              ),
+            };
+          });
           setDataTable({ rows: providers, headers: Object.keys(providers[0]) });
         } else {
           setDataTable({ rows: [], headers: [] });
@@ -51,10 +73,32 @@ export const AdminDashboard = () => {
       });
     }
     if (data === "users") {
-      usersDB.getAllUsers().then((res) => {
-        if (res.rows.length > 0) {
+      userDB.getAllUsers().then((res) => {
+        if (res.rows.length > 1) {
           const rows = res.rows;
-          let users = rows.map((row: any) => row.doc);
+          let users = rows.map((row: any) => {
+            return {
+              ...row.doc,
+              acciones: (
+                <CuteButton
+                  text="Borrar"
+                  clickHandler={() => {
+                    const currentData = data;
+                    userDB.deleteUser(row.doc).then((res) => {
+                      dispatch({
+                        type: CHANGE_DATA,
+                        payload: { newData: "Cargando..." },
+                      });
+                      dispatch({
+                        type: CHANGE_DATA,
+                        payload: { newData: currentData },
+                      });
+                    });
+                  }}
+                />
+              ),
+            };
+          });
           users = users.filter((item: any) => item.language === undefined);
           setDataTable({ rows: users, headers: Object.keys(users[0]) });
         } else {
@@ -83,6 +127,7 @@ export const AdminDashboard = () => {
       </Navbar>
       <CenterBox>
         <BoxContWrapper>
+          <h1>{data as string}</h1>
           {dataTable.rows.length > 0 ? (
             <CustomTable data={dataTable.rows} headers={dataTable.headers} />
           ) : (
@@ -99,8 +144,8 @@ export const AdminDashboard = () => {
       </CenterBox>
       <Modal title="titulo">
         <>
-          {data == "providers" && <AddProvider />}
-          {data == "users" && <AddUser setDataTable={setDataTable} />}
+          {data == "providers" && <AddProvider dispatch={dispatch} />}
+          {data == "users" && <AddUser dispatch={dispatch} />}
           {data != "providers" && data != "users" && <AddRequisicion />}
         </>
       </Modal>
