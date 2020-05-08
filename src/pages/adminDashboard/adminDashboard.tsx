@@ -110,12 +110,13 @@ export const AdminDashboard = () => {
       });
     }
     if (data !== "providers" && data !== "users") {
-      catalogsDB.getAllCatalogues().then((res) => {
-        if (res.rows.length > 0) {
-          const rows = res.rows;
+      catalogsDB.getAllCatalogues(data as string).then((res: any) => {
+        console.log(res);
+        if (res.docs.length > 0) {
+          const rows = res.docs;
           const providers = rows.map((row: any) => {
             return {
-              ...row.doc,
+              ...row,
               acciones: (
                 <CuteButton
                   text="Borrar"
@@ -147,7 +148,30 @@ export const AdminDashboard = () => {
   return (
     <AdminWrapper>
       <Navbar>
-        <DropdownButtonB options={["uno", "dos"]} text="Catalogos" />
+        <DropdownButtonB
+          options={[
+            "Molino",
+            "Báscula",
+            "Emplaye",
+            "Empaque",
+            "Almacén",
+            "Bodega de empaque",
+            "Laboratorio",
+            "Limpieza",
+            "Cocina",
+            "Mantenimiento",
+            "Potabilizadora",
+            "Administración",
+            "Centro de Acopio",
+            "Cosecha",
+            "Reporte",
+            "Hormillas",
+            "Evaporación",
+            "Llenado y Envasado",
+            "Producción",
+          ]}
+          text="Catálogo"
+        />
         <CuteButton
           text="Proveedores"
           clickHandler={() =>

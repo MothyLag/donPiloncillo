@@ -11,7 +11,7 @@ export const ButtonContainer = styled.div`
 	    transition:.3s;
     }
     :hover div{
-    	width: 100%;
+    	
     	visibility:visible;
     	opacity:1;
     }
@@ -39,6 +39,7 @@ export const PrincipalButton = styled.button`
 
 export const SecundaryButton = styled.button`
     width: 100%;
+    margin-top: 10px;
     justify-content: center;
     background: transparent;
     color: #ffffff;

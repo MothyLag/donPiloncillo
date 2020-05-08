@@ -28,13 +28,14 @@ export class CatalogueDB {
       .catch((res) => res);
   }
 
-  public getAllCatalogues() {
-    return this.db
-      .allDocs({ include_docs: true, attachments: false })
-      .then((res) => {
-        console.log(res);
-        return res;
-      })
-      .catch((error) => error);
+  public async getAllCatalogues(catalog: string) {
+    await this.db.createIndex({
+      index: { fields: ["catalogue"] },
+    });
+    return await this.db.find({
+      selector: {
+        catalogue: catalog,
+      },
+    });
   }
 }
