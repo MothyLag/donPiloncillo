@@ -39,6 +39,7 @@ export const PrincipalButton = styled.button`
 
 export const SecundaryButton = styled.button`
     width: 100%;
+    margin-top: 10px;
     justify-content: center;
     background: transparent;
     color: #ffffff;
