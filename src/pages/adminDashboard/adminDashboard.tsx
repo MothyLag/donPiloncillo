@@ -21,6 +21,7 @@ import { AddUser } from "../../components/addUser/addUser";
 import { AddRequisicion } from "../../components/addRequisicion/addRequisicion";
 import { IDataTableState } from "./adminDashboard.types";
 import { CatalogueDB } from "../../database/catalogues/catalogues.pouch";
+import { DropdownButtonB } from "../../components/dropdownButtonB/dropdownButtonB";
 
 export const AdminDashboard = () => {
   const logged = useSelector<IAppState>((state) => state.session.logged);
@@ -146,6 +147,7 @@ export const AdminDashboard = () => {
   return (
     <AdminWrapper>
       <Navbar>
+        <DropdownButtonB options={["uno", "dos"]} text="Catalogos" />
         <CuteButton text="Catalogos" />
         <CuteButton
           text="Proveedores"
