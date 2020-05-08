@@ -23,7 +23,8 @@ export const PrincipalButton = styled.button`
 	border:none;
 	border-radius: 25px; 
     padding:8px 16px;
-    background-color:#A55B5B;
+    background: rgba(234, 97, 97, .8);
+    color: #EBEBEB;
     color:white;
     transition:.3s;
     cursor:pointer;
@@ -36,8 +37,8 @@ export const SecundaryButton = styled.button`
 	border-radius: 25px; 
     padding:8px 16px;
     margin-top: 10px;
-    background-color:#A55B5B;
-    color:white;
+    background: rgba(234, 97, 97, .9);
+    color: #EBEBEB;
     transition:.3s;
     cursor:pointer;
     :hover{
