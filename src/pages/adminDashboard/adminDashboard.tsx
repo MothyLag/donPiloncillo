@@ -147,7 +147,7 @@ export const AdminDashboard = () => {
   return (
     <AdminWrapper>
       <Navbar>
-        <DropdownButtonB options={["uno", "dos"]} text="Catalogos" />
+        <DropdownButtonB options={["Molino", "Báscula", "Emplaye", "Empaque", "Almacén", "Bodega de empaque", "Laboratorio", "Limpieza", "Cocina", "Mantenimiento", "Potabilizadora", "Administración", "Centro de Acopio", "Cosecha", "Reporte",  "Hormillas", "Evaporación", "Llenado y Envasado", "Producción"]} text="Catálogo" />
         <CuteButton text="Catalogos" />
         <CuteButton
           text="Proveedores"

@@ -11,7 +11,7 @@ export const ButtonContainer = styled.div`
 	    transition:.3s;
     }
     :hover div{
-    	width: 100%;
+    	
     	visibility:visible;
     	opacity:1;
     }
