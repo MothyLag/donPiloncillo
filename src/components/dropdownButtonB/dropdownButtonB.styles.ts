@@ -20,29 +20,41 @@ export const ButtonContainer = styled.div`
 	`;
 
 export const PrincipalButton = styled.button`
-	border:none;
-	border-radius: 25px; 
-    padding:8px 16px;
-    background: rgba(234, 97, 97, .8);
-    color: #EBEBEB;
-    color:white;
-    transition:.3s;
-    cursor:pointer;
-	
+    justify-content: center;
+    background: transparent;
+    color: #ffffff;
+    border-radius: 3px;
+    outline: none;
+    border-color: transparent;
+    font-size: 18px;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.4s;
+    font-weight: bold;
+    :hover {
+    transform: scale(1.1);
+  }	
 `;
 
 export const SecundaryButton = styled.button`
-	width: 100%;
-	border:none;
-	border-radius: 25px; 
-    padding:8px 16px;
-    margin-top: 10px;
-    background: rgba(234, 97, 97, .9);
-    color: #EBEBEB;
-    transition:.3s;
-    cursor:pointer;
-    :hover{
-    	background: #000000;
+    width: 100%;
+    justify-content: center;
+    background: transparent;
+    color: #ffffff;
+    border-radius: 3px;
+    outline: none;
+    border-color: transparent;
+    font-size: 18px;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.4s;
+    font-weight: bold;
+    :hover {
+    transform: scale(1.1);
+    background: #ffffff;
+    color: #000000;
     }
 	
 `;
