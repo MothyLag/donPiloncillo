@@ -148,7 +148,6 @@ export const AdminDashboard = () => {
     <AdminWrapper>
       <Navbar>
         <DropdownButtonB options={["uno", "dos"]} text="Catalogos" />
-        <CuteButton text="Catalogos" />
         <CuteButton
           text="Proveedores"
           clickHandler={() =>
