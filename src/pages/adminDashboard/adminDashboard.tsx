@@ -20,6 +20,7 @@ import { UserDB } from "../../database/users/users.pouch";
 import { AddUser } from "../../components/addUser/addUser";
 import { AddRequisicion } from "../../components/addRequisicion/addRequisicion";
 import { IDataTableState } from "./adminDashboard.types";
+import { CatalogueDB } from "../../database/catalogues/catalogues.pouch";
 
 export const AdminDashboard = () => {
   const logged = useSelector<IAppState>((state) => state.session.logged);
@@ -27,6 +28,7 @@ export const AdminDashboard = () => {
   const history = useHistory();
   const data = useSelector<IAppState>((state) => state.data.data);
   const providersDB = new ProviderDB();
+  const catalogsDB = new CatalogueDB();
   const userDB = new UserDB();
   const [dataTable, setDataTable] = useState<IDataTableState>({
     rows: [],
@@ -101,6 +103,39 @@ export const AdminDashboard = () => {
           });
           users = users.filter((item: any) => item.language === undefined);
           setDataTable({ rows: users, headers: Object.keys(users[0]) });
+        } else {
+          setDataTable({ rows: [], headers: [] });
+        }
+      });
+    }
+    if (data !== "providers" && data !== "users") {
+      catalogsDB.getAllCatalogues().then((res) => {
+        if (res.rows.length > 0) {
+          const rows = res.rows;
+          const providers = rows.map((row: any) => {
+            return {
+              ...row.doc,
+              acciones: (
+                <CuteButton
+                  text="Borrar"
+                  clickHandler={() => {
+                    const currentData = data;
+                    providersDB.deleteProvider(row.doc).then((res) => {
+                      dispatch({
+                        type: CHANGE_DATA,
+                        payload: { newData: "Cargando..." },
+                      });
+                      dispatch({
+                        type: CHANGE_DATA,
+                        payload: { newData: currentData },
+                      });
+                    });
+                  }}
+                />
+              ),
+            };
+          });
+          setDataTable({ rows: providers, headers: Object.keys(providers[0]) });
         } else {
           setDataTable({ rows: [], headers: [] });
         }
