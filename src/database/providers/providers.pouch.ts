@@ -26,4 +26,11 @@ export class ProviderDB {
       .then((res) => res)
       .catch((error) => error);
   }
+
+  public deleteProvider(doc: any) {
+    return this.db
+      .remove(doc)
+      .then((res) => res)
+      .catch((error) => error);
+  }
 }

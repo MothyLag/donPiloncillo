@@ -3,11 +3,12 @@ import { FormWrapper } from "./addProviderStd.styles";
 import { Input } from "../inputStd/input";
 import { useAddProvider } from "./addProvider.formik";
 import { useFormik } from "formik";
-import { IAddProvider } from "./addProvider.types";
+import { IAddProvider, IAddProviderProps } from "./addProvider.types";
 import { SubmitButton } from "../submitbutton/submitbutton.styles";
 
-export const AddProvider = () => {
-  const addProvider = useAddProvider();
+export const AddProvider = (props: IAddProviderProps) => {
+  const { dispatch } = props;
+  const addProvider = useAddProvider(dispatch);
   const formik = useFormik<IAddProvider>(addProvider);
 
   return (

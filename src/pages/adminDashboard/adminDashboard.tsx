@@ -19,6 +19,8 @@ import { ProviderDB } from "../../database/providers/providers.pouch";
 import { UserDB } from "../../database/users/users.pouch";
 import { AddUser } from "../../components/addUser/addUser";
 import { AddRequisicion } from "../../components/addRequisicion/addRequisicion";
+import { IDataTableState } from "./adminDashboard.types";
+import { CatalogueDB } from "../../database/catalogues/catalogues.pouch";
 
 export const AdminDashboard = () => {
   const logged = useSelector<IAppState>((state) => state.session.logged);
@@ -26,8 +28,12 @@ export const AdminDashboard = () => {
   const history = useHistory();
   const data = useSelector<IAppState>((state) => state.data.data);
   const providersDB = new ProviderDB();
-  const usersDB = new UserDB();
-  const [dataTable, setDataTable] = useState({ rows: [{}], headers: [""] });
+  const catalogsDB = new CatalogueDB();
+  const userDB = new UserDB();
+  const [dataTable, setDataTable] = useState<IDataTableState>({
+    rows: [],
+    headers: [],
+  });
   useEffect(() => {
     if (!logged) {
       //history.replace("/");
@@ -39,19 +45,99 @@ export const AdminDashboard = () => {
       providersDB.getAllProviders().then((res) => {
         if (res.rows.length > 0) {
           const rows = res.rows;
-          const providers = rows.map((row: any) => row.doc);
-          console.log(Object.keys(providers[0]));
+          const providers = rows.map((row: any) => {
+            return {
+              ...row.doc,
+              acciones: (
+                <CuteButton
+                  text="Borrar"
+                  clickHandler={() => {
+                    const currentData = data;
+                    providersDB.deleteProvider(row.doc).then((res) => {
+                      dispatch({
+                        type: CHANGE_DATA,
+                        payload: { newData: "Cargando..." },
+                      });
+                      dispatch({
+                        type: CHANGE_DATA,
+                        payload: { newData: currentData },
+                      });
+                    });
+                  }}
+                />
+              ),
+            };
+          });
           setDataTable({ rows: providers, headers: Object.keys(providers[0]) });
+        } else {
+          setDataTable({ rows: [], headers: [] });
         }
       });
     }
     if (data === "users") {
-      usersDB.getAllUsers().then((res) => {
-        if (res.rows.length > 0) {
+      userDB.getAllUsers().then((res) => {
+        if (res.rows.length > 1) {
           const rows = res.rows;
-          let users = rows.map((row: any) => row.doc);
+          let users = rows.map((row: any) => {
+            return {
+              ...row.doc,
+              acciones: (
+                <CuteButton
+                  text="Borrar"
+                  clickHandler={() => {
+                    const currentData = data;
+                    userDB.deleteUser(row.doc).then((res) => {
+                      dispatch({
+                        type: CHANGE_DATA,
+                        payload: { newData: "Cargando..." },
+                      });
+                      dispatch({
+                        type: CHANGE_DATA,
+                        payload: { newData: currentData },
+                      });
+                    });
+                  }}
+                />
+              ),
+            };
+          });
           users = users.filter((item: any) => item.language === undefined);
           setDataTable({ rows: users, headers: Object.keys(users[0]) });
+        } else {
+          setDataTable({ rows: [], headers: [] });
+        }
+      });
+    }
+    if (data !== "providers" && data !== "users") {
+      catalogsDB.getAllCatalogues().then((res) => {
+        if (res.rows.length > 0) {
+          const rows = res.rows;
+          const providers = rows.map((row: any) => {
+            return {
+              ...row.doc,
+              acciones: (
+                <CuteButton
+                  text="Borrar"
+                  clickHandler={() => {
+                    const currentData = data;
+                    providersDB.deleteProvider(row.doc).then((res) => {
+                      dispatch({
+                        type: CHANGE_DATA,
+                        payload: { newData: "Cargando..." },
+                      });
+                      dispatch({
+                        type: CHANGE_DATA,
+                        payload: { newData: currentData },
+                      });
+                    });
+                  }}
+                />
+              ),
+            };
+          });
+          setDataTable({ rows: providers, headers: Object.keys(providers[0]) });
+        } else {
+          setDataTable({ rows: [], headers: [] });
         }
       });
     }
@@ -76,7 +162,12 @@ export const AdminDashboard = () => {
       </Navbar>
       <CenterBox>
         <BoxContWrapper>
-          <CustomTable data={dataTable.rows} headers={dataTable.headers} />
+          <h1>{data as string}</h1>
+          {dataTable.rows.length > 0 ? (
+            <CustomTable data={dataTable.rows} headers={dataTable.headers} />
+          ) : (
+            <h1>No hay datos en {data}</h1>
+          )}
         </BoxContWrapper>
         <FloatButton
           backgroundColor="#67676A"
@@ -88,10 +179,9 @@ export const AdminDashboard = () => {
       </CenterBox>
       <Modal title="titulo">
         <>
-          {data == "providers" && <AddProvider />}
-          {data == "users" && <AddUser />}
-
-          { (data != "providers" && data!="users") && <AddRequisicion/> }
+          {data == "providers" && <AddProvider dispatch={dispatch} />}
+          {data == "users" && <AddUser dispatch={dispatch} />}
+          {data != "providers" && data != "users" && <AddRequisicion />}
         </>
       </Modal>
     </AdminWrapper>

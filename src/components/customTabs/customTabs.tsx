@@ -13,9 +13,7 @@ export const CustomTabs = (props: ICustomTabsProps) => {
             onClick={() => {
               const auxArr = state.map((item) => item);
               for (let value in auxArr) auxArr[value] = false;
-              console.log(auxArr);
               auxArr[index] = true;
-              console.log(auxArr);
               setState(auxArr);
             }}
           >

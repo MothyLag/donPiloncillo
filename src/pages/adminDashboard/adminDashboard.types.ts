@@ -1,10 +1,8 @@
 interface IRowsTable extends Object {
   _id: string;
   _rev: string;
-  acciones?: any;
 }
-
-export interface ICustomTableProps {
+export interface IDataTableState {
+  rows: IRowsTable[];
   headers: string[];
-  data: IRowsTable[];
 }
