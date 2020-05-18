@@ -18,7 +18,7 @@ export const useAddProvider = (dispatch: any) => {
           });
           dispatch({
             type: CHANGE_DATA,
-            payload: { newData: "providers" },
+            payload: { newData: "Proveedores" },
           });
           alert("proveedor agregado");
         })

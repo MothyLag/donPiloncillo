@@ -42,7 +42,7 @@ export const AdminDashboard = () => {
   }, [logged, history]);
 
   useEffect(() => {
-    if (data === "providers") {
+    if (data === "Proveedores") {
       providersDB.getAllProviders().then((res) => {
         if (res.rows.length > 0) {
           const rows = res.rows;
@@ -75,7 +75,7 @@ export const AdminDashboard = () => {
         }
       });
     }
-    if (data === "users") {
+    if (data === "Usuarios") {
       userDB.getAllUsers().then((res) => {
         if (res.rows.length > 0) {
           const rows = res.rows;
@@ -109,7 +109,11 @@ export const AdminDashboard = () => {
         }
       });
     }
-    if (data !== "providers" && data !== "users" && data !== "Cargando...") {
+    if (
+      data !== "Proveedores" &&
+      data !== "Usuarios" &&
+      data !== "Cargando..."
+    ) {
       catalogsDB.getAllCatalogues(data as string).then((res: any) => {
         if (res.docs.length > 0) {
           const rows = res.docs;
@@ -167,7 +171,7 @@ export const AdminDashboard = () => {
             "Centro de Acopio",
             "Cosecha",
             "Reporte",
-            "Hormillas",
+            "Hornillas",
             "Evaporación",
             "Llenado y Envasado",
             "Producción",
@@ -177,13 +181,13 @@ export const AdminDashboard = () => {
         <CuteButton
           text="Proveedores"
           clickHandler={() =>
-            dispatch({ type: CHANGE_DATA, payload: { newData: "providers" } })
+            dispatch({ type: CHANGE_DATA, payload: { newData: "Proveedores" } })
           }
         />
         <CuteButton
           text="Usuarios"
           clickHandler={() =>
-            dispatch({ type: CHANGE_DATA, payload: { newData: "users" } })
+            dispatch({ type: CHANGE_DATA, payload: { newData: "Usuarios" } })
           }
         />
       </Navbar>
@@ -206,9 +210,9 @@ export const AdminDashboard = () => {
       </CenterBox>
       <Modal title="titulo">
         <>
-          {data == "providers" && <AddProvider dispatch={dispatch} />}
-          {data == "users" && <AddUser dispatch={dispatch} />}
-          {data != "providers" && data != "users" && <AddRequisicion />}
+          {data == "Proveedores" && <AddProvider dispatch={dispatch} />}
+          {data == "Usuarios" && <AddUser dispatch={dispatch} />}
+          {data != "Proveedores" && data != "Usuarios" && <AddRequisicion />}
         </>
       </Modal>
     </AdminWrapper>
