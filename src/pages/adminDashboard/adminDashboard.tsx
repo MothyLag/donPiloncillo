@@ -77,7 +77,7 @@ export const AdminDashboard = () => {
     }
     if (data === "users") {
       userDB.getAllUsers().then((res) => {
-        if (res.rows.length > 1) {
+        if (res.rows.length > 0) {
           const rows = res.rows;
           let users = rows.map((row: any) => {
             return {
@@ -109,7 +109,7 @@ export const AdminDashboard = () => {
         }
       });
     }
-    if (data !== "providers" && data !== "users") {
+    if (data !== "providers" && data !== "users" && data !== "Cargando...") {
       catalogsDB.getAllCatalogues(data as string).then((res: any) => {
         if (res.docs.length > 0) {
           const rows = res.docs;
@@ -121,9 +121,7 @@ export const AdminDashboard = () => {
                   text="Borrar"
                   clickHandler={() => {
                     const currentData = data;
-                    console.log(row);
                     catalogsDB.deleteCatalogue(row).then((res) => {
-                      console.log(res);
                       dispatch({
                         type: CHANGE_DATA,
                         payload: { newData: "Cargando..." },
