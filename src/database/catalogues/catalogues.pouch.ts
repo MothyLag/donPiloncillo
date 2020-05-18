@@ -22,10 +22,14 @@ export class CatalogueDB {
   }
 
   public async deleteCatalogue(docs: any) {
+    console.log(docs);
     await this.db
       .remove(docs)
-      .then((res) => res)
-      .catch((res) => res);
+      .then((res) => {
+        console.log(res);
+        return res;
+      })
+      .catch((error) => console.log(error));
   }
 
   public async getAllCatalogues(catalog: string) {

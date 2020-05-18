@@ -43,7 +43,6 @@ export class UserDB {
     return this.db
       .allDocs({ include_docs: true, attachments: false })
       .then((res) => {
-        console.log(res);
         return res;
       })
       .catch((error) => error);

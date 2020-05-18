@@ -16,7 +16,6 @@ export const DropdownButtonB = (props: IDropdownButtonBProps) => {
       <PrincipalButton onClick={clickHandler}>{text}</PrincipalButton>
       <div>
         {options.map((option) => {
-          console.log(option);
           return (
             <SecundaryButton
               onClick={() =>

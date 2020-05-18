@@ -8,7 +8,6 @@ import {
   TableData,
 } from "./customTable.style";
 import { ICustomTableProps } from "./customTable.types";
-import { CuteButton } from "../cutebutton/cutebutton";
 export const CustomTable = (props: ICustomTableProps) => {
   const { data = [], headers = [] } = props;
   return (

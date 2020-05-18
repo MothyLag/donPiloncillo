@@ -111,10 +111,9 @@ export const AdminDashboard = () => {
     }
     if (data !== "providers" && data !== "users") {
       catalogsDB.getAllCatalogues(data as string).then((res: any) => {
-        console.log(res);
         if (res.docs.length > 0) {
           const rows = res.docs;
-          const providers = rows.map((row: any) => {
+          const catalogues = rows.map((row: any) => {
             return {
               ...row,
               acciones: (
@@ -122,7 +121,9 @@ export const AdminDashboard = () => {
                   text="Borrar"
                   clickHandler={() => {
                     const currentData = data;
-                    providersDB.deleteProvider(row.doc).then((res) => {
+                    console.log(row);
+                    catalogsDB.deleteCatalogue(row).then((res) => {
+                      console.log(res);
                       dispatch({
                         type: CHANGE_DATA,
                         payload: { newData: "Cargando..." },
@@ -137,7 +138,10 @@ export const AdminDashboard = () => {
               ),
             };
           });
-          setDataTable({ rows: providers, headers: Object.keys(providers[0]) });
+          setDataTable({
+            rows: catalogues,
+            headers: Object.keys(catalogues[0]),
+          });
         } else {
           setDataTable({ rows: [], headers: [] });
         }
