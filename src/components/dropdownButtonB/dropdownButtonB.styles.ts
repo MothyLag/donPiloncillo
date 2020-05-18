@@ -14,7 +14,11 @@ export const ButtonContainer = styled.div`
     height: 500px;
     visibility: visible;
     overflow-y: auto;
+    overflow-x: hidden;
     opacity: 1;
+    ::-webkit-scrollbar {
+      display: none; /* Chrome Safari */
+    }
   }
 `;
 
