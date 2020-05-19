@@ -170,11 +170,11 @@ export const AdminDashboard = () => {
             "Administración",
             "Centro de Acopio",
             "Cosecha",
-            "Reporte",
             "Hornillas",
             "Evaporación",
             "Llenado y Envasado",
             "Producción",
+            "Reporte",
           ]}
           text="Catálogo"
         />
