@@ -208,7 +208,7 @@ export const AdminDashboard = () => {
           clickHandler={() => dispatch({ type: OPEN_MODAL })}
         ></FloatButton>
       </CenterBox>
-      <Modal title="titulo">
+      <Modal title={`Agregar ${data}`}>
         <>
           {data == "Proveedores" && <AddProvider dispatch={dispatch} />}
           {data == "Usuarios" && <AddUser dispatch={dispatch} />}

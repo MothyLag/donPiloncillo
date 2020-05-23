@@ -25,7 +25,7 @@ export const Input = (props: IInputProps) => {
         >
           <OptionStd disabled>{placeholder}</OptionStd>
           {dataSelect.map((option) => {
-            return <OptionStd>{option}</OptionStd>;
+            return <OptionStd value={option.value}>{option.text}</OptionStd>;
           })}
         </SelectStd>
       );

@@ -39,7 +39,11 @@ export const FormSignUp = () => {
         value={formik.values.gender}
         placeholder="selecióne su sexo"
         type="select"
-        dataSelect={["Masculino", "Femenino", "Otro"]}
+        dataSelect={[
+          { text: "Masculino", value: "Masculino" },
+          { text: "Femenino", value: "Femenino" },
+          { text: "Otro", value: "Otro" },
+        ]}
       />
       <Input
         id="ocupation"

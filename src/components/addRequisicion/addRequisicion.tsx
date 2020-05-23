@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FormWrapper } from "./addRequisicionStd.styles";
 import { Input } from "../inputStd/input";
 import { useAddRequisicion } from "./addRequisicion.formik";
@@ -7,12 +7,33 @@ import { IAddRequisicion } from "./addRequisicion.types";
 import { SubmitButton } from "../submitbutton/submitbutton.styles";
 import { useSelector, useDispatch } from "react-redux";
 import { IAppState } from "../../utils/state.type";
+import { ProviderDB } from "../../database/providers/providers.pouch";
+
+interface ISelectData {
+  text: string;
+  value: string;
+}
 
 export const AddRequisicion = () => {
   const dataState = useSelector<IAppState>((state) => state.data.data);
   const dispatch = useDispatch();
   const addRequisicion = useAddRequisicion(dataState, dispatch);
   const formik = useFormik<IAddRequisicion>(addRequisicion);
+  const [idsData, setIdsData] = useState<ISelectData[]>([]);
+  const providerDb = new ProviderDB();
+  useEffect(() => {
+    providerDb.getAllProviders().then((res) => {
+      let newData: ISelectData[] = res.rows.map((provider: any) => {
+        return {
+          value: provider.doc._id,
+          text: provider.doc.denominacionComercial,
+        } as ISelectData;
+      });
+      setIdsData(newData);
+      console.log(newData);
+    });
+  }, []);
+
   return (
     <FormWrapper onSubmit={formik.handleSubmit}>
       <Input
@@ -22,6 +43,7 @@ export const AddRequisicion = () => {
         onBlur={formik.handleBlur}
         value={formik.values.idProveedor}
         placeholder="Id del proveedor"
+        dataSelect={idsData}
       />
       {(dataState == "hornillas" ||
         dataState == "evaporacion" ||
@@ -33,7 +55,13 @@ export const AddRequisicion = () => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.linea}
-          dataSelect={["Liena 1", "Linea 2", "Linea 3", "Linea 4", "Linea 5"]}
+          dataSelect={[
+            { text: "Liena 1", value: "Liena 1" },
+            { text: "Liena 2", value: "Liena 2" },
+            { text: "Liena 3", value: "Liena 3" },
+            { text: "Liena 4", value: "Liena 4" },
+            { text: "Liena 5", value: "Liena 5" },
+          ]}
         />
       )}
       <Input
