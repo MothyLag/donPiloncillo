@@ -6,6 +6,9 @@ import { Provider } from "react-redux";
 import reducers from "./store/reducers";
 import { createStore } from "redux";
 import { AdminDashboard } from "./pages/adminDashboard/adminDashboard";
+import { RequisicionDocument } from "./components/printDocument/printDocument";
+import { PDFViewer } from "@react-pdf/renderer";
+import { DownloadMedia } from "./pages/dowonladMedia/downloadMedia";
 
 function App() {
   const store = createStore(reducers, ["AppState"]);
@@ -14,6 +17,9 @@ function App() {
       <Switch>
         <Route path="/adminDashboard">
           <AdminDashboard />
+        </Route>
+        <Route path="/printRequisicion">
+          <DownloadMedia />
         </Route>
         <Route path="/">
           {/* <NavBar /> */}

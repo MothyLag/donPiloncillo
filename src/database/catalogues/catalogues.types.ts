@@ -8,5 +8,7 @@ export interface ICatalogue {
   linea?: string;
   responsableArea: string;
   departamento: string;
-  catalogue: string;
+  catalogo: string;
+  _rev?: string;
+  _id?: string;
 }

@@ -34,7 +34,7 @@ export class CatalogueDB {
 
   public async getAllCatalogues(catalog: string) {
     await this.db.createIndex({
-      index: { fields: ["catalogue"] },
+      index: { fields: ["catalogo"] },
     });
     return await this.db.find({
       selector: {

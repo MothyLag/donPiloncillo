@@ -12,7 +12,7 @@ export const useAddRequisicion = (dataState: any, dispatch: any) => {
     onSubmit: (data: IAddRequisicion) => {
       const newCatalog = {
         ...data,
-        catalogue: dataState,
+        catalogo: dataState,
       } as ICatalogue;
       catalogsDB
         .addCatalogue(newCatalog)
