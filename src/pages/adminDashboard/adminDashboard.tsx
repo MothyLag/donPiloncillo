@@ -227,8 +227,8 @@ export const AdminDashboard = () => {
           <DownloadExcel
             text={textoInicial}
             arreglo={{
-              lista1: { nuevo: "2", nuevo2: "3" },
-              lista2: { nuevo: "2", nuevo2: "3" },
+              lista1: [{ nuevo: "2", nuevo2: "3" }],
+              lista2: [{ nuevo: "2", nuevo2: "3" }],
             }}
           />
         </>
