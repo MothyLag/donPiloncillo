@@ -15,7 +15,7 @@ export const DownloadExcel = (props: IDownloadExcel) => {
   const labels = Object.keys(aux[0]);
   console.log(labels);
   return (
-    <ExcelFile element={<button type="button">{text}</button>}>
+    <ExcelFile element={<CuteButton text={text} />}>
       {Object.values(arreglo).map((option: any, index: number) => {
         return (
           <ExcelSheet data={option} name={sheetsName[index]}>
