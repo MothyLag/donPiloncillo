@@ -12,7 +12,7 @@ export const CuteButton = (props: ICuteButtonProps) => {
           {text}
         </ButtonCute>
       ) : (
-        <ButtonCute onClick={clickHandler}>{text}</ButtonCute>
+        <ButtonCute type="button" onClick={clickHandler}>{text}</ButtonCute>
       )}
     </>
   );

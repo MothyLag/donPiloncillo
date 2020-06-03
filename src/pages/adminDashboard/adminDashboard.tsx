@@ -23,8 +23,6 @@ import { IDataTableState } from "./adminDashboard.types";
 import { CatalogueDB } from "../../database/catalogues/catalogues.pouch";
 import { DropdownButtonB } from "../../components/dropdownButtonB/dropdownButtonB";
 
-import { DownloadExcel } from "../../components/downloadExcel/downloadExcel";
-
 export const AdminDashboard = () => {
   const logged = useSelector<IAppState>((state) => state.session.logged);
   const dispatch = useDispatch();
@@ -34,12 +32,6 @@ export const AdminDashboard = () => {
   const catalogsDB = new CatalogueDB();
   const userDB = new UserDB();
 
-  const variable = {
-    lista1: [{ nuevo: "2" }, { nuevo2: "3" }],
-    lista2: [{ nuevo: "2" }, { nuevo2: "3" }],
-  };
-
-  const textoInicial = "Descargarssssssssss";
 
   const [dataTable, setDataTable] = useState<IDataTableState>({
     rows: [],
@@ -233,14 +225,6 @@ export const AdminDashboard = () => {
           {data == "Proveedores" && <AddProvider dispatch={dispatch} />}
           {data == "Usuarios" && <AddUser dispatch={dispatch} />}
           {data != "Proveedores" && data != "Usuarios" && <AddRequisicion />}
-
-          <DownloadExcel
-            text={textoInicial}
-            arreglo={{
-              lista1: [{ nuevo: "2", nuevo2: "3" }],
-              lista2: [{ nuevo: "2", nuevo2: "3" }],
-            }}
-          />
         </>
       </Modal>
     </AdminWrapper>
