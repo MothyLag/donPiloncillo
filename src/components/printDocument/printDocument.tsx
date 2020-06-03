@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { CatalogueDB } from "../../database/catalogues/catalogues.pouch";
-import { useSelector } from "react-redux";
-import { IAppState } from "../../utils/state.type";
+
 import { ICatalogue } from "../../database/catalogues/catalogues.types";
 
-export const RequisicionDocument = () => {
-  const data = useSelector<IAppState, string>((state) => state.data.data);
+export const RequisicionDocument = (props: any) => {
   const [table, setTable] = useState<ICatalogue[]>([]);
   const db = new CatalogueDB();
+  const { catalog } = props;
   let today = new Date();
   const dd = String(today.getDate()).padStart(2, "0");
   const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
@@ -15,7 +14,7 @@ export const RequisicionDocument = () => {
 
   const currentDate = dd + "/" + mm + "/" + yyyy;
   useEffect(() => {
-    db.getAllCatalogues("Molino").then((res: any) => {
+    db.getAllCatalogues(catalog).then((res: any) => {
       let catalogs = res.docs.map((catalog: ICatalogue) => {
         return catalog;
       });
@@ -39,8 +38,10 @@ export const RequisicionDocument = () => {
   return (
     <div
       style={{
-        width: "100%",
-        height: "100vh",
+        width: "210mm",
+        minHeight: "297mm",
+        marginLeft: "auto",
+        marginRight: "auto",
         backgroundColor: "#EFEFEF",
         display: "flex",
         alignItems: "center",

@@ -38,7 +38,7 @@ export class CatalogueDB {
     });
     return await this.db.find({
       selector: {
-        catalogue: catalog,
+        catalogo: catalog,
       },
     });
   }

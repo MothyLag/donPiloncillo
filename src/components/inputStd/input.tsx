@@ -23,7 +23,7 @@ export const Input = (props: IInputProps) => {
           onBlur={onBlur}
           value={value}
         >
-          <OptionStd disabled>{placeholder}</OptionStd>
+          <OptionStd selected>{placeholder}</OptionStd>
           {dataSelect.map((option) => {
             return <OptionStd value={option.value}>{option.text}</OptionStd>;
           })}

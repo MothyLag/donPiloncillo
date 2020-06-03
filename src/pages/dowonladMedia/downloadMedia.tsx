@@ -2,6 +2,9 @@ import React, { useRef } from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { RequisicionDocument } from "../../components/printDocument/printDocument";
+import { useParams } from "react-router";
+import { FloatButton } from "../../components/floatButton/floatButton";
+import { faDownload, faArrowDown } from "@fortawesome/free-solid-svg-icons";
 
 const handlePDF = (input: string) => {
   const element = document.querySelector(input) as HTMLElement;
@@ -14,12 +17,19 @@ const handlePDF = (input: string) => {
 };
 
 export const DownloadMedia = () => {
+  const { catalog } = useParams();
   return (
     <>
       <div id="printArea">
-        <RequisicionDocument />
+        <RequisicionDocument catalog={catalog} />
       </div>
-      <button onClick={() => handlePDF("#printArea")}>create pdf</button>
+      <FloatButton
+        backgroundColor="green"
+        width="50px"
+        icon={faArrowDown}
+        color="white"
+        clickHandler={() => handlePDF("#printArea")}
+      />
     </>
   );
 };

@@ -18,7 +18,7 @@ function App() {
         <Route path="/adminDashboard">
           <AdminDashboard />
         </Route>
-        <Route path="/printRequisicion">
+        <Route path="/printRequisicion/:catalog">
           <DownloadMedia />
         </Route>
         <Route path="/">

@@ -12,14 +12,15 @@ export const useAddRequisicion = (dataState: any, dispatch: any) => {
     onSubmit: (data: IAddRequisicion) => {
       const newCatalog = {
         ...data,
-        catalogo: dataState,
+        catalogo: currentData,
       } as ICatalogue;
       catalogsDB
         .addCatalogue(newCatalog)
         .then((res) => {
-          alert("requisición añadida");
+          console.log(res);
           dispatch({ type: CHANGE_DATA, payload: { newData: "Cargando..." } });
           dispatch({ type: CHANGE_DATA, payload: { newData: currentData } });
+          alert("requisición añadida");
         })
         .catch((error) => {
           alert("falló al añadir la requisición");

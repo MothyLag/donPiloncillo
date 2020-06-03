@@ -24,7 +24,7 @@ export const useAddUser = (dispatch: any) => {
               });
               dispatch({
                 type: CHANGE_DATA,
-                payload: { newData: "users" },
+                payload: { newData: "Usuarios" },
               });
             }
           });

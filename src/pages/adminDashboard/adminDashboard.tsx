@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { AdminWrapper } from "./adminDashboard.styles";
 import { useSelector, useDispatch } from "react-redux";
 import { IAppState } from "../../utils/state.type";
-import { faPlus, faArrowDown } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faMoneyBillAlt } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router";
 import { Navbar } from "../../components/navbar/navbar";
 import { CuteButton } from "../../components/cutebutton/cutebutton";
@@ -31,7 +31,6 @@ export const AdminDashboard = () => {
   const providersDB = new ProviderDB();
   const catalogsDB = new CatalogueDB();
   const userDB = new UserDB();
-
 
   const [dataTable, setDataTable] = useState<IDataTableState>({
     rows: [],
@@ -213,10 +212,10 @@ export const AdminDashboard = () => {
           <FloatButton
             backgroundColor="green"
             width="50px"
-            icon={faArrowDown}
+            icon={faMoneyBillAlt}
             color="white"
             position="60px"
-            clickHandler={() => dispatch({ type: OPEN_MODAL })}
+            clickHandler={() => history.push(`/printRequisicion/${data}`)}
           />
         )}
       </CenterBox>
