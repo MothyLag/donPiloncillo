@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { AdminWrapper } from "./adminDashboard.styles";
 import { useSelector, useDispatch } from "react-redux";
 import { IAppState } from "../../utils/state.type";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router";
 import { Navbar } from "../../components/navbar/navbar";
 import { CuteButton } from "../../components/cutebutton/cutebutton";
@@ -217,6 +217,16 @@ export const AdminDashboard = () => {
           color="white"
           clickHandler={() => dispatch({ type: OPEN_MODAL })}
         ></FloatButton>
+        {data != "Proveedores" && data != "Usuarios" && (
+          <FloatButton
+            backgroundColor="green"
+            width="50px"
+            icon={faArrowDown}
+            color="white"
+            position="60px"
+            clickHandler={() => dispatch({ type: OPEN_MODAL })}
+          />
+        )}
       </CenterBox>
       <Modal title={`Agregar ${data}`}>
         <>

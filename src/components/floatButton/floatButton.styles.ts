@@ -9,7 +9,7 @@ export const FloatWrapper = styled.div`
     props.width ? props.width : "50px"};
   border-radius: 50%;
   background-color: ${(props: IFloatButtonStyleProps) => props.backgroundColor};
-  bottom: 5px;
+  bottom: ${(props: IFloatButtonStyleProps) => props.position};
   right: 5px;
   color: ${(props: IFloatButtonStyleProps) => props.color};
   cursor: pointer;

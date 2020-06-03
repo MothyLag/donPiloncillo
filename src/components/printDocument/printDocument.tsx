@@ -8,6 +8,12 @@ export const RequisicionDocument = () => {
   const data = useSelector<IAppState, string>((state) => state.data.data);
   const [table, setTable] = useState<ICatalogue[]>([]);
   const db = new CatalogueDB();
+  let today = new Date();
+  const dd = String(today.getDate()).padStart(2, "0");
+  const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+  const yyyy = today.getFullYear();
+
+  const currentDate = dd + "/" + mm + "/" + yyyy;
   useEffect(() => {
     db.getAllCatalogues("Molino").then((res: any) => {
       let catalogs = res.docs.map((catalog: ICatalogue) => {
@@ -37,9 +43,12 @@ export const RequisicionDocument = () => {
         height: "100vh",
         backgroundColor: "#EFEFEF",
         display: "flex",
-        justifyContent: "center",
+        alignItems: "center",
+        justifyContent: "space-between",
+        flexDirection: "column",
       }}
     >
+      <h1>Orden de requisición del día {currentDate}</h1>
       <table>
         <thead>
           {Object.keys(table[0]).map((header: any, index: number) => {
@@ -65,6 +74,9 @@ export const RequisicionDocument = () => {
           })}
         </tbody>
       </table>
+      <h3 style={{ borderTop: "1px solid", padding: "20px" }}>
+        Firma de aprobación
+      </h3>
     </div>
   );
 };

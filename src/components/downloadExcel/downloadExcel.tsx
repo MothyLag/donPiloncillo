@@ -7,7 +7,6 @@ import { CuteButton } from "../../components/cutebutton/cutebutton";
 const ExcelFile = ReactExport.ExcelFile;
 const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
 const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
-
 export const DownloadExcel = (props: IDownloadExcel) => {
   const { text = "Descargar", arreglo } = props;
   const sheetsName = Object.keys(arreglo).map((res) => res);
@@ -19,7 +18,7 @@ export const DownloadExcel = (props: IDownloadExcel) => {
       {Object.values(arreglo).map((option: any, index: number) => {
         return (
           <ExcelSheet data={option} name={sheetsName[index]}>
-            {labels.map((item: any, i: number) => {
+            {labels.map((item: any) => {
               return <ExcelColumn label={item} value={item} />;
             })}
           </ExcelSheet>
