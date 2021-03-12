@@ -25,7 +25,7 @@
     "@types/yup": "^0.26.35",
     "formik": "^2.1.4",
     "html2canvas": "^1.0.0-rc.5",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.3.1",
     "pouchdb": "^7.2.1",
     "pouchdb-browser": "^7.2.1",
     "pouchdb-find": "^7.2.1",
